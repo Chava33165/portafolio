@@ -34,10 +34,11 @@
     <section class="hero" id="inicio">
       <canvas class="puntos" aria-hidden="true"></canvas>
       <div class="hero-dentro">
-        <p class="hero-hola"><span data-t="hero.hola">Hola, soy</span> <span class="ola" aria-hidden="true">👋</span></p>
+        <button class="hero-avatar" type="button" aria-label="Salvador (dibujo con su pelo rizado)" data-avatar></button>
+        <p class="hero-hola"><span data-t="hero.hola">Hola, soy</span></p>
         <h1 class="titulo" aria-label="Salvador Pantoja">
           <span class="linea" data-letras>Salvador</span>
-          <span class="linea acento" data-letras>Pantoja<svg class="subrayado" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 60 4, 140 4, 297 11"/></svg></span>
+          <span class="linea acento" data-letras>Pantoja<svg class="subrayado" viewBox="0 0 300 30" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1"/></svg></span>
         </h1>
         <p class="hero-rota"><span data-t="hero.antes">Y además</span> <span class="rota" aria-live="polite"><span class="rota-texto"></span></span></p>
         <p class="hero-lugar"><span class="punto-vivo" aria-hidden="true"></span><span data-t="hero.lugar">Guadalajara, México</span></p>
@@ -195,12 +196,12 @@
       <p class="eyebrow revela" data-t="gusta.eyebrow">Lo que me gusta</p>
       <h2 class="h2 revela" data-t="gusta.titulo">Tócalas</h2>
       <div class="cartas">
-        <button class="carta revela" style="--i:0" type="button"><span class="cara"><span class="emoji">🖥️</span><b data-t="gusta.1"></b></span><span class="dorso" data-t="gusta.1.atras"></span></button>
-        <button class="carta revela" style="--i:1" type="button"><span class="cara"><span class="emoji">🔍</span><b data-t="gusta.2"></b></span><span class="dorso" data-t="gusta.2.atras"></span></button>
-        <button class="carta revela" style="--i:2" type="button"><span class="cara"><span class="emoji">✨</span><b data-t="gusta.3"></b></span><span class="dorso" data-t="gusta.3.atras"></span></button>
-        <button class="carta revela" style="--i:3" type="button"><span class="cara"><span class="emoji">⛏️</span><b data-t="gusta.4"></b></span><span class="dorso" data-t="gusta.4.atras"></span></button>
-        <button class="carta revela" style="--i:4" type="button"><span class="cara"><span class="emoji">🛠️</span><b data-t="gusta.5"></b></span><span class="dorso" data-t="gusta.5.atras"></span></button>
-        <button class="carta revela" style="--i:5" type="button"><span class="cara"><span class="emoji">🗣️</span><b data-t="gusta.6"></b></span><span class="dorso" data-t="gusta.6.atras"></span></button>
+        <button class="carta revela" style="--i:0" type="button"><span class="cara"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="6" rx="1.5"/><rect x="4" y="14" width="16" height="6" rx="1.5"/><path d="M8 7h.01M8 17h.01M12 7h5M12 17h5"/></svg><b data-t="gusta.1"></b></span><span class="dorso" data-t="gusta.1.atras"></span></button>
+        <button class="carta revela" style="--i:1" type="button"><span class="cara"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5.5 5.5M8 10.5h5M10.5 8v5"/></svg><b data-t="gusta.2"></b></span><span class="dorso" data-t="gusta.2.atras"></span></button>
+        <button class="carta revela" style="--i:2" type="button"><span class="cara"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c.6 4.6 2.4 6.4 7 7-4.6.6-6.4 2.4-7 7-.6-4.6-2.4-6.4-7-7 4.6-.6 6.4-2.4 7-7zM19 16c.2 1.6.9 2.3 2.5 2.5-1.6.2-2.3.9-2.5 2.5-.2-1.6-.9-2.3-2.5-2.5 1.6-.2 2.3-.9 2.5-2.5z"/></svg><b data-t="gusta.3"></b></span><span class="dorso" data-t="gusta.3.atras"></span></button>
+        <button class="carta revela" style="--i:3" type="button"><span class="cara"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20 14 10M10.5 6.5c3-2.2 6.6-2.6 9.5-1.5-1.1 2.9-.7 6.5 1.5 9.5"/><path d="m12 8 4 4"/></svg><b data-t="gusta.4"></b></span><span class="dorso" data-t="gusta.4.atras"></span></button>
+        <button class="carta revela" style="--i:4" type="button"><span class="cara"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6.5a4 4 0 0 0 5 5L12 19a2.1 2.1 0 0 1-3-3l7.5-7.5a4 4 0 0 0-2-2z"/><path d="M5 5l3 3M4 8l4-4"/></svg><b data-t="gusta.5"></b></span><span class="dorso" data-t="gusta.5.atras"></span></button>
+        <button class="carta revela" style="--i:5" type="button"><span class="cara"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14a1.5 1.5 0 0 1 1.5 1.5v7A1.5 1.5 0 0 1 19 16h-7l-4 3.5V16H5a1.5 1.5 0 0 1-1.5-1.5v-7A1.5 1.5 0 0 1 5 6z"/><path d="M8 11h.01M12 11h.01M16 11h.01"/></svg><b data-t="gusta.6"></b></span><span class="dorso" data-t="gusta.6.atras"></span></button>
       </div>
       <div class="busco revela">
         <span class="punto-vivo" aria-hidden="true"></span>
@@ -251,6 +252,7 @@
     <a href="#inicio" data-t="pie.arriba">Volver arriba</a>
   </footer>
 
+  <script src="rizos.js"></script>
   <script src="textos.js"></script>
   <script src="app.js"></script>
 </body>

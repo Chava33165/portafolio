@@ -137,7 +137,6 @@ html[lang="en"] .idioma::before { transform: translateX(100%); }
   opacity: 0; transform: translateY(8px);
   animation: aparece 700ms var(--ease-out) 150ms forwards;
 }
-.ola { display: inline-block; transform-origin: 70% 80%; animation: saludo 1.6s ease-in-out 1.6s 2; }
 .titulo {
   margin: 0;
   font-family: var(--serif); font-weight: 400;
@@ -163,12 +162,47 @@ html[lang="en"] .idioma::before { transform: translateX(100%); }
   position: absolute; left: 0.04em; right: 0.06em; bottom: -0.02em; width: calc(100% - 0.1em); height: 0.16em;
   overflow: visible;
 }
+.subrayado { height: 0.22em; bottom: -0.08em; }
 .subrayado path {
-  fill: none; stroke: var(--acento); stroke-width: 5; stroke-linecap: round;
-  stroke-dasharray: 320; stroke-dashoffset: 320;
-  animation: traza 900ms var(--ease-in-out) 1.35s forwards;
+  fill: none; stroke: var(--acento); stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  stroke-dasharray: 1; stroke-dashoffset: 1;
+  animation: traza 1.2s var(--ease-in-out) 1.35s forwards;
 }
 @keyframes traza { to { stroke-dashoffset: 0; } }
+
+/* Avatar: Chava en línea fina, con su pelo rizado. Se dibuja solo, parpadea, sigue al cursor con la mirada
+   y si lo tocas rebota. */
+.hero-avatar {
+  display: block; width: 150px; margin: 0 0 16px -8px; padding: 0; border: 0; background: none; cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+@media (min-width: 900px) {
+  .hero-avatar { position: absolute; right: 0; top: 50%; width: clamp(260px, 27vw, 360px); margin: 0; translate: 0 -54%; }
+}
+.avatar { display: block; width: 100%; height: auto; overflow: visible; transform-origin: 50% 100%; }
+.avatar path { fill: none; stroke: var(--tinta); stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.av-linea { stroke-width: 2.4; animation: traza 1.3s var(--ease-in-out) 0.25s forwards; }
+.av-fina { stroke-width: 1.8; }
+.av-sonrisa { stroke: var(--acento) !important; animation-delay: 1.4s !important; }
+.av-rizo { stroke-width: 2.2; animation: traza 1.6s var(--ease-in-out) 0.9s forwards; }
+.av-atras { stroke-width: 1.5; opacity: 0.45; animation-delay: 0.6s; }
+.av-medio { stroke-width: 1.9; opacity: 0.75; animation-delay: 0.75s; }
+@media (max-width: 899px) { .av-atras { display: none; } .av-medio { opacity: 1; } }
+.av-rizo-acento { stroke: var(--acento) !important; stroke-width: 2.4; opacity: 1; animation-delay: 1.9s; }
+.av-ojo { fill: var(--tinta); opacity: 0; transform-box: fill-box; transform-origin: center; animation: aparece 300ms ease 1.6s forwards, parpadeo 5.5s ease-in-out 3s infinite; }
+@keyframes parpadeo { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(0.1); } }
+.av-pelo { transform-origin: 120px 150px; animation: mece 7s ease-in-out 3s infinite; }
+@keyframes mece { 0%, 100% { transform: rotate(0deg); } 30% { transform: rotate(1.6deg); } 70% { transform: rotate(-1.4deg); } }
+.av-ojos { transition: transform 120ms linear; }
+.avatar.boing { animation: boing 750ms var(--resorte); }
+@keyframes boing { 0% { transform: scale(1.08, 0.9); } 100% { transform: none; } }
+.hero-avatar:active .avatar { scale: 0.97; }
+
+/* Rizito junto a cada título de sección (en vez de la rayita) */
+.rizito { width: 34px; height: 13px; flex: none; overflow: visible; }
+.rizito path { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.1s var(--ease-in-out) 250ms; }
+.visto .rizito path { stroke-dashoffset: 0; }
 
 .hero-rota {
   margin: clamp(22px, 4vw, 36px) 0 0;
@@ -218,7 +252,7 @@ html[lang="en"] .idioma::before { transform: translateX(100%); }
   margin: 0 0 18px; display: inline-flex; align-items: center; gap: 10px;
   font: 500 0.8125rem/1 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--acento-tinta);
 }
-.eyebrow::before { content: ""; width: 22px; height: 1px; background: currentColor; }
+.eyebrow:not(:has(.rizito))::before { content: ""; width: 22px; height: 1px; background: currentColor; }
 .h2 {
   margin: 0 0 clamp(36px, 6vw, 64px); max-width: 18ch;
   font: 400 clamp(2.1rem, 6vw, 4rem)/1.04 var(--serif); letter-spacing: -0.03em;
@@ -444,7 +478,8 @@ html[lang="en"] .idioma::before { transform: translateX(100%); }
   display: flex; flex-direction: column; justify-content: space-between;
   background: var(--superficie); border: 1px solid var(--linea); box-shadow: var(--sombra);
 }
-.cara .emoji { font-size: 2rem; line-height: 1; }
+.cara .icono { width: 30px; height: 30px; fill: none; stroke: var(--acento-tinta); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.carta.revela.visto .icono { animation: chip 600ms var(--ease-out) both; animation-delay: calc(200ms + var(--i, 0) * 70ms); }
 .cara b { font: 500 1.2rem/1.15 var(--serif); letter-spacing: -0.01em; }
 .dorso {
   display: flex; align-items: center; transform: rotateY(-180deg);
@@ -543,7 +578,11 @@ main, .barra nav { transition: opacity 180ms ease, filter 180ms ease; }
   html { scroll-behavior: auto; }
   .letra, .hero-hola, .hero-rota, .hero-lugar, .baja { animation: fundido 400ms ease forwards; transform: none; filter: none; animation-delay: 0ms; }
   .subrayado path { animation: none; stroke-dashoffset: 0; }
-  .ola, .baja svg, .punto-vivo::after { animation: none; }
+  .avatar path { animation: none !important; stroke-dashoffset: 0; }
+  .av-ojo { animation: none; opacity: 1; }
+  .av-pelo, .avatar.boing { animation: none; }
+  .rizito path { transition: none; stroke-dashoffset: 0; }
+  .baja svg, .punto-vivo::after { animation: none; }
   .revela { transform: none; filter: none; transition: opacity 400ms ease; }
   .revela.visto .chips li { animation: none; }
   .escena * { animation: none !important; }

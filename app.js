@@ -55,6 +55,42 @@
     texto.replaceWith(frag);
   }
 
+  // ------------------------------------------------------------------ rizos: avatar, subrayado y adornos
+
+  const caja = $("[data-avatar]");
+  const avatar = window.Rizos.avatar();
+  caja.append(avatar);
+  const ojos = $(".av-ojos", avatar);
+  caja.addEventListener("click", () => {
+    if (menosMovimiento.matches) return;
+    avatar.classList.remove("boing");
+    avatar.getBoundingClientRect(); // reinicia la animación si lo tocan seguido
+    avatar.classList.add("boing");
+  });
+  avatar.addEventListener("animationend", (e) => { if (e.animationName === "boing") avatar.classList.remove("boing"); });
+  $(".subrayado path").setAttribute("d", window.Rizos.linea(300, 30, 8, 9));
+  for (const eb of $$(".eyebrow")) {
+    // El texto pasa a un <span> propio: así cambiar de idioma no borra el rizito.
+    const texto = document.createElement("span");
+    texto.dataset.t = eb.dataset.t;
+    texto.textContent = eb.textContent;
+    eb.removeAttribute("data-t");
+    eb.textContent = "";
+    eb.insertAdjacentHTML("afterbegin", `<svg class="rizito" viewBox="0 0 36 14" aria-hidden="true"><path pathLength="1" d="${window.Rizos.linea(36, 14, 3, 5, 160)}"/></svg>`);
+    eb.append(texto);
+  }
+
+  // Los ojos miran hacia el cursor/dedo (máx. 3 unidades del dibujo).
+  function mirar(x, y) {
+    const r = avatar.getBoundingClientRect();
+    if (!r.width) return;
+    const cx = r.left + r.width * 0.5, cy = r.top + r.height * 0.48;
+    const dx = x - cx, dy = y - cy, d = Math.hypot(dx, dy) || 1;
+    const f = Math.min(1, d / 260) * 3;
+    ojos.style.transform = `translate(${((dx / d) * f).toFixed(2)}px, ${((dy / d) * f).toFixed(2)}px)`;
+  }
+  addEventListener("pointermove", (e) => { if (heroVisible && !menosMovimiento.matches) mirar(e.clientX, e.clientY); }, { passive: true });
+
   // ------------------------------------------------------------------ "Y además …" que rota
 
   const rotaTexto = $(".rota-texto");
@@ -280,7 +316,7 @@
   // ------------------------------------------------------------------ contacto: WhatsApp y correo (armados aquí para que los bots no los recojan)
 
   const wa = ["52", "33", "3220", "2065"].join("");
-  $('[data-red="whatsapp"]').href = `https://wa.me/${wa}?text=${encodeURIComponent("¡Hola, Salvador! Vi tu portafolio 👋")}`;
+  $('[data-red="whatsapp"]').href = `https://wa.me/${wa}?text=${encodeURIComponent("¡Hola, Salvador! Vi tu portafolio.")}`;
   $('[data-red="correo"]').addEventListener("click", (e) => {
     e.preventDefault();
     location.href = "mailto:" + ["salva33vera", "gmail.com"].join("@") + "?subject=" + encodeURIComponent("Hola desde tu portafolio");
