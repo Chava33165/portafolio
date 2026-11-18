@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="estilo.css?v=06b0c000">
+  <link rel="stylesheet" href="estilo.css?v=18d16a76">
 </head>
 <body>
   <div class="progreso" aria-hidden="true"></div>
@@ -34,7 +34,10 @@
     <section class="hero" id="inicio">
       <canvas class="puntos" aria-hidden="true"></canvas>
       <div class="hero-dentro">
-        <button class="hero-avatar" type="button" aria-label="Salvador (dibujo con su pelo rizado)" data-avatar></button>
+        <button class="hero-avatar" type="button" aria-label="Salvador: mi avatar con pelo rizado y gorra" data-avatar>
+          <svg class="girasol-fondo florece" viewBox="-100 -100 200 200" aria-hidden="true"><g class="gira" data-girasol></g></svg>
+          <span class="retrato"><img src="img/avatar.jpg" srcset="img/avatar-chico.jpg 320w, img/avatar.jpg 760w" sizes="(min-width: 900px) 330px, 170px" alt="" width="765" height="1024" fetchpriority="high"></span>
+        </button>
         <p class="hero-hola"><span data-t="hero.hola">Hola, soy</span></p>
         <h1 class="titulo" aria-label="Salvador Pantoja">
           <span class="linea" data-letras>Salvador</span>
@@ -247,13 +250,14 @@
     </section>
   </main>
 
+  <div class="jardin revela" data-jardin aria-hidden="true"></div>
   <footer class="pie">
     <p data-t="pie.texto">Hecho a mano por Salvador Pantoja · servido desde mi Raspberry Pi</p>
     <a href="#inicio" data-t="pie.arriba">Volver arriba</a>
   </footer>
 
-  <script src="rizos.js?v=821e5749"></script>
+  <script src="rizos.js?v=dabe66f1"></script>
   <script src="textos.js?v=5859b9cb"></script>
-  <script src="app.js?v=c79d86d7"></script>
+  <script src="app.js?v=037ab182"></script>
 </body>
 </html>

@@ -55,41 +55,52 @@
     texto.replaceWith(frag);
   }
 
-  // ------------------------------------------------------------------ rizos: avatar, subrayado y adornos
+  // ------------------------------------------------------------------ retrato, girasoles y rizos
 
-  const caja = $("[data-avatar]");
-  const avatar = window.Rizos.avatar();
-  caja.append(avatar);
-  const ojos = $(".av-ojos", avatar);
+  const R = window.Rizos;
+  const caja = $("[data-avatar]"), retrato = $(".retrato", caja);
+  $("[data-girasol]").innerHTML = R.girasol({ petalos: 24, centro: 30, largo: 58, ancho: 15, semillas: 160 });
   caja.addEventListener("click", () => {
     if (menosMovimiento.matches) return;
-    avatar.classList.remove("boing");
-    avatar.getBoundingClientRect(); // reinicia la animación si lo tocan seguido
-    avatar.classList.add("boing");
+    caja.classList.remove("boing");
+    caja.getBoundingClientRect(); // reinicia la animación si lo tocan seguido
+    caja.classList.add("boing");
   });
-  avatar.addEventListener("animationend", (e) => { if (e.animationName === "boing") avatar.classList.remove("boing"); });
-  $(".subrayado path").setAttribute("d", window.Rizos.linea(300, 30, 8, 9));
+  retrato.addEventListener("animationend", (e) => { if (e.animationName === "boing") caja.classList.remove("boing"); });
+  // Se inclina hacia el cursor como una foto que levantas (solo con mouse; en el cel solo rebota).
+  caja.addEventListener("pointermove", (e) => {
+    if (!punteroFino.matches || menosMovimiento.matches) return;
+    const r = caja.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+    retrato.style.transform = `rotate(-3deg) rotateY(${(x * 14).toFixed(1)}deg) rotateX(${(-y * 12).toFixed(1)}deg) scale(1.03)`;
+  });
+  caja.addEventListener("pointerleave", () => { retrato.style.transform = ""; });
+
+  // El subrayado de "Pantoja" es un rizo.
+  $(".subrayado path").setAttribute("d", R.linea(300, 30, 8, 9));
+
+  // Girasolito junto a cada título de sección.
+  const chiquito = R.girasol({ petalos: 13, centro: 30, largo: 62, ancho: 24, semillas: 0, detalle: false });
   for (const eb of $$(".eyebrow")) {
-    // El texto pasa a un <span> propio: así cambiar de idioma no borra el rizito.
+    // El texto pasa a un <span> propio: así cambiar de idioma no borra el girasol.
     const texto = document.createElement("span");
     texto.dataset.t = eb.dataset.t;
     texto.textContent = eb.textContent;
     eb.removeAttribute("data-t");
     eb.textContent = "";
-    eb.insertAdjacentHTML("afterbegin", `<svg class="rizito" viewBox="0 0 36 14" aria-hidden="true"><path pathLength="1" d="${window.Rizos.linea(36, 14, 3, 5, 160)}"/></svg>`);
+    eb.insertAdjacentHTML("afterbegin", `<svg class="girasolito" viewBox="-100 -100 200 200" aria-hidden="true">${chiquito}</svg>`);
     eb.append(texto);
   }
 
-  // Los ojos miran hacia el cursor/dedo (máx. 3 unidades del dibujo).
-  function mirar(x, y) {
-    const r = avatar.getBoundingClientRect();
-    if (!r.width) return;
-    const cx = r.left + r.width * 0.5, cy = r.top + r.height * 0.48;
-    const dx = x - cx, dy = y - cy, d = Math.hypot(dx, dy) || 1;
-    const f = Math.min(1, d / 260) * 3;
-    ojos.style.transform = `translate(${((dx / d) * f).toFixed(2)}px, ${((dy / d) * f).toFixed(2)}px)`;
-  }
-  addEventListener("pointermove", (e) => { if (heroVisible && !menosMovimiento.matches) mirar(e.clientX, e.clientY); }, { passive: true });
+  // El jardín del final: tres girasoles con tallo y hojas que crecen al llegar.
+  const flor = R.girasol({ petalos: 20, centro: 26, largo: 44, ancho: 13, semillas: 90 });
+  $("[data-jardin]").innerHTML = [0, 1, 2].map((k) => `
+    <svg viewBox="-60 -70 120 330">
+      <path class="tallo" pathLength="1" d="M0 250 C ${k === 1 ? 8 : -10} 190, ${k === 2 ? 14 : -6} 120, 0 30"/>
+      <path class="hoja izq" d="M-2 170 C -30 150, -52 160, -58 176 C -40 186, -18 184, -2 170 Z"/>
+      <path class="hoja der" d="M2 120 C 28 98, 50 106, 56 122 C 38 134, 16 132, 2 120 Z"/>
+      <g class="flor">${flor}</g>
+    </svg>`).join("");
 
   // ------------------------------------------------------------------ "Y además …" que rota
 

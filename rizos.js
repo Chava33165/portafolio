@@ -83,5 +83,35 @@ window.Rizos = (() => {
   const linea = (ancho, alto, vueltas, radio, pasos = 400) =>
     coil(recta(radio + 2, alto / 2, ancho - radio - 2, alto / 2), { vueltas, radio, aplastar: 1.15, pasos });
 
-  return { coil, arco, recta, avatar, linea };
+  // Girasol (como el fondo de pantalla de Chava): dos coronas de pétalos y semillas en espiral de Fibonacci
+  // (cada semilla gira 137.5°, el "ángulo de oro" de los girasoles de verdad). Centrado en (0,0).
+  // Devuelve el marcado de un <g>; cada pétalo lleva --i para que florezcan en cascada.
+  function girasol({ petalos = 22, centro = 26, largo = 46, ancho = 13, semillas = 120, detalle = true } = {}) {
+    const petalo = (r0, l, w) =>
+      `M0 ${-r0} C ${w} ${-(r0 + l * 0.25)}, ${w * 0.55} ${-(r0 + l * 0.85)}, 0 ${-(r0 + l)} ` +
+      `C ${-w * 0.55} ${-(r0 + l * 0.85)}, ${-w} ${-(r0 + l * 0.25)}, 0 ${-r0} Z`;
+    let s = "";
+    const coronas = [
+      { n: petalos, giro: 360 / petalos / 2, l: largo * 0.92, w: ancho * 1.05, clase: "petalo atras" },
+      { n: petalos, giro: 0, l: largo, w: ancho, clase: "petalo" },
+    ];
+    let k = 0;
+    for (const c of coronas) {
+      for (let i = 0; i < c.n; i++) {
+        const a = (360 / c.n) * i + c.giro;
+        s += `<g transform="rotate(${a.toFixed(1)})"><path class="${c.clase}" style="--i:${k++}" d="${petalo(centro - 4, c.l, c.w)}"/>` +
+          (detalle && c.clase === "petalo" ? `<path class="vena" d="M0 ${-(centro + 2)} L0 ${-(centro + c.l * 0.7)}"/>` : "") + `</g>`;
+      }
+    }
+    s += `<circle class="centro" r="${centro}"/>`;
+    if (detalle) {
+      for (let i = 1; i <= semillas; i++) {
+        const a = i * 137.508 * (Math.PI / 180), r = (centro - 3) * Math.sqrt(i / semillas);
+        s += `<circle class="semilla" cx="${(r * Math.cos(a)).toFixed(1)}" cy="${(r * Math.sin(a)).toFixed(1)}" r="${(0.9 + 1.1 * (i / semillas)).toFixed(2)}"/>`;
+      }
+    }
+    return s;
+  }
+
+  return { coil, arco, recta, avatar, linea, girasol };
 })();
