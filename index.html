@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Salvador Pantoja · Portafolio</title>
+  <meta name="description" content="Técnico en electrónica y estudiante de Ingeniería en Software en Guadalajara. Servidores de IA, homelab, Python, Flutter y más.">
+  <meta name="theme-color" content="#F5F4EE" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1F1E1D" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="Salvador Pantoja · Portafolio">
+  <meta property="og:description" content="Reparo servidores de IA, programo y automatizo mi vida desde mi propio servidor.">
+  <meta property="og:image" content="img/app-panel.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23D97757'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='36' font-style='italic' text-anchor='middle' fill='%23FAF9F5'%3ES%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <div class="progreso" aria-hidden="true"></div>
+
+  <header class="barra">
+    <a class="marca" href="#inicio" aria-label="Inicio">S<span>.</span>P</a>
+    <nav class="menu">
+      <a href="#sobre" data-t="nav.sobre">Sobre mí</a>
+      <a href="#proyectos" data-t="nav.proyectos">Proyectos</a>
+      <a href="#contacto" data-t="nav.contacto">Contacto</a>
+    </nav>
+    <button class="idioma" type="button" aria-label="Change language to English"><span class="idioma-es">ES</span><span class="idioma-en">EN</span></button>
+  </header>
+
+  <main>
+    <!-- 1. Título épico -->
+    <section class="hero" id="inicio">
+      <canvas class="puntos" aria-hidden="true"></canvas>
+      <div class="hero-dentro">
+        <p class="hero-hola"><span data-t="hero.hola">Hola, soy</span> <span class="ola" aria-hidden="true">👋</span></p>
+        <h1 class="titulo" aria-label="Salvador Pantoja">
+          <span class="linea" data-letras>Salvador</span>
+          <span class="linea acento" data-letras>Pantoja<svg class="subrayado" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 60 4, 140 4, 297 11"/></svg></span>
+        </h1>
+        <p class="hero-rota"><span data-t="hero.antes">Y además</span> <span class="rota" aria-live="polite"><span class="rota-texto"></span></span></p>
+        <p class="hero-lugar"><span class="punto-vivo" aria-hidden="true"></span><span data-t="hero.lugar">Guadalajara, México</span></p>
+      </div>
+      <a class="baja" href="#sobre"><span data-t="hero.baja">Baja</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+    </section>
+
+    <!-- 2. Quién soy -->
+    <section class="seccion sobre" id="sobre">
+      <p class="eyebrow revela" data-t="sobre.eyebrow">Quién soy</p>
+      <p class="sobre-texto" data-t="sobre.texto" data-palabras></p>
+    </section>
+
+    <!-- 3. Lo que hago -->
+    <section class="seccion hago" id="hago">
+      <p class="eyebrow revela" data-t="hago.eyebrow">Lo que hago</p>
+      <h2 class="h2 revela" data-t="hago.titulo">Dos caminos que se juntan</h2>
+      <div class="caminos">
+        <article class="camino revela" style="--i:0">
+          <div class="camino-icono" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></svg></div>
+          <h3 data-t="hago.sw">Software</h3>
+          <p data-t="hago.sw.texto"></p>
+          <ul class="chips"><li>Python</li><li>FastAPI</li><li>pytest</li><li>SQL</li><li>Go</li><li>Flutter</li><li>Svelte</li><li>JavaScript</li><li>Apps Script</li></ul>
+        </article>
+        <article class="camino revela" style="--i:1">
+          <div class="camino-icono" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></svg></div>
+          <h3 data-t="hago.hw">Hardware</h3>
+          <p data-t="hago.hw.texto"></p>
+          <ul class="chips"><li>ICT</li><li>Flying probe</li><li>PCBA</li><li>NVIDIA GB200/GB300</li><li>ESD</li><li>Torque</li><li>ESP32</li></ul>
+        </article>
+        <article class="camino revela" style="--i:2">
+          <div class="camino-icono" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01M11 7.5h6M11 16.5h6"/></svg></div>
+          <h3 data-t="hago.infra">Infraestructura</h3>
+          <p data-t="hago.infra.texto"></p>
+          <ul class="chips"><li>Linux</li><li>Docker</li><li>Tailscale</li><li>Cloudflare</li><li>Pi-hole</li><li>Samba</li><li>cron</li><li>rclone</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- 4. Proyectos -->
+    <section class="seccion proyectos" id="proyectos">
+      <p class="eyebrow revela" data-t="proy.eyebrow">Proyectos</p>
+      <h2 class="h2 revela" data-t="proy.titulo">Cosas que construí y uso todos los días</h2>
+
+      <div class="rejilla">
+        <!-- KORRA -->
+        <article class="proyecto grande revela" data-vivo>
+          <div class="escena escena-chat" aria-hidden="true">
+            <div class="burbuja yo" data-t="proy.korra.chat1">¿qué me falta entregar?</div>
+            <div class="burbuja ella escribiendo"><i></i><i></i><i></i></div>
+            <div class="burbuja ella respuesta" data-t="proy.korra.chat2"></div>
+          </div>
+          <div class="proyecto-texto">
+            <h3 data-t="proy.korra">KORRA</h3>
+            <p data-t="proy.korra.texto"></p>
+            <ul class="chips chicos"><li>Python</li><li>Telegram</li><li>DeepSeek</li><li>Claude Code</li><li>Google APIs</li><li>Docker</li></ul>
+            <a class="enlace" href="https://github.com/Chava33165/korra-asistente" target="_blank" rel="noopener"><span data-t="proy.codigo">Ver código</span> ↗</a>
+          </div>
+        </article>
+
+        <!-- Finanzas -->
+        <article class="proyecto revela" data-vivo>
+          <div class="escena escena-dinero" aria-hidden="true">
+            <div class="tarjeta-nu"><span>Nu</span><span class="chip-oro"></span><span class="num">•••• 4821</span></div>
+            <div class="queda"><b class="contador" data-hasta="802">$0</b><small data-t="proy.finanzas.queda">te quedan esta semana</small></div>
+          </div>
+          <div class="proyecto-texto">
+            <h3 data-t="proy.finanzas">Mi sistema de dinero</h3>
+            <p data-t="proy.finanzas.texto"></p>
+            <ul class="chips chicos"><li>FastAPI</li><li>SQLite</li><li>pytest</li><li>Apple Shortcuts</li></ul>
+            <a class="enlace" href="https://github.com/Chava33165/finanzas-api" target="_blank" rel="noopener"><span data-t="proy.codigo">Ver código</span> ↗</a>
+          </div>
+        </article>
+
+        <!-- App -->
+        <article class="proyecto revela" data-vivo>
+          <div class="escena escena-telefono" aria-hidden="true">
+            <div class="telefono">
+              <img src="img/app-panel.jpg" alt="" class="activa">
+              <img src="img/app-dinero.jpg" alt="" loading="lazy">
+              <img src="img/app-proximos.jpg" alt="" loading="lazy">
+              <img src="img/app-jobs.jpg" alt="" loading="lazy">
+            </div>
+          </div>
+          <div class="proyecto-texto">
+            <h3 data-t="proy.app">Mi homelab en el iPhone</h3>
+            <p data-t="proy.app.texto"></p>
+            <ul class="chips chicos"><li>Flutter</li><li>Dart</li><li>iOS</li><li>Face ID</li></ul>
+            <a class="enlace" href="https://github.com/Chava33165/homelab-app" target="_blank" rel="noopener"><span data-t="proy.codigo">Ver código</span> ↗</a>
+          </div>
+        </article>
+
+        <!-- Dashboard -->
+        <article class="proyecto revela" data-vivo>
+          <div class="escena escena-cpu" aria-hidden="true">
+            <div class="cpu-cabeza"><span>CPU</span><b class="cpu-valor">23%</b></div>
+            <svg viewBox="0 0 200 70" preserveAspectRatio="none"><path class="cpu-area"/><path class="cpu-linea"/></svg>
+          </div>
+          <div class="proyecto-texto">
+            <h3 data-t="proy.dash">Panel del homelab</h3>
+            <p data-t="proy.dash.texto"></p>
+            <ul class="chips chicos"><li>Go</li><li>Svelte</li><li>SSE</li><li>Docker</li></ul>
+            <a class="enlace" href="https://github.com/Chava33165/homelab-dashboard" target="_blank" rel="noopener"><span data-t="proy.codigo">Ver código</span> ↗</a>
+          </div>
+        </article>
+
+        <!-- Watt & Beaver -->
+        <article class="proyecto revela" data-vivo>
+          <div class="escena escena-watt" aria-hidden="true">
+            <div class="medidor agua"><span class="relleno"></span><svg viewBox="0 0 24 24"><path d="M12 3c3.5 4.2 6 7.4 6 10.5A6 6 0 0 1 6 13.5C6 10.4 8.5 7.2 12 3z"/></svg></div>
+            <div class="medidor luz"><span class="relleno"></span><svg viewBox="0 0 24 24"><path d="M13 2 5 13.5h6L10 22l9-12h-6z"/></svg></div>
+          </div>
+          <div class="proyecto-texto">
+            <h3 data-t="proy.watt">Watt &amp; Beaver</h3>
+            <p data-t="proy.watt.texto"></p>
+            <ul class="chips chicos"><li>IoT</li><li>ESP32</li><li>Node.js</li><li>Flutter</li><li>Raspberry Pi</li></ul>
+            <a class="enlace" href="https://github.com/Chava33165/WattYBeaver-Proyecto" target="_blank" rel="noopener"><span data-t="proy.codigo">Ver código</span> ↗</a>
+          </div>
+        </article>
+
+        <!-- Racks -->
+        <article class="proyecto revela" data-vivo>
+          <div class="escena escena-rack" aria-hidden="true">
+            <div class="rack"><i></i><i></i><i class="sale"></i><i></i><i></i><i></i></div>
+          </div>
+          <div class="proyecto-texto">
+            <h3 data-t="proy.rack">Racks de servidores de IA</h3>
+            <p data-t="proy.rack.texto"></p>
+            <ul class="chips chicos"><li>NVIDIA GB200</li><li>GB300</li><li>ESD</li><li>Torque</li></ul>
+            <span class="enlace mudo" data-t="proy.trabajo">Experiencia</span>
+          </div>
+        </article>
+      </div>
+
+      <a class="otros revela" href="https://github.com/Chava33165" target="_blank" rel="noopener"><span data-t="proy.otros">Más proyectos en GitHub</span> <span aria-hidden="true">→</span></a>
+    </section>
+
+    <!-- 5. Trayectoria -->
+    <section class="seccion trayectoria" id="trayectoria">
+      <p class="eyebrow revela" data-t="tray.eyebrow">Trayectoria</p>
+      <h2 class="h2 revela" data-t="tray.titulo">Cómo llegué aquí</h2>
+      <div class="linea-tiempo">
+      <span class="linea-riel" aria-hidden="true"><span class="linea-trazo"></span></span>
+      <ol>
+        <li class="hito"><span class="hito-punto"></span><small data-t="tray.1.cuando"></small><h3 data-t="tray.1.que"></h3><p data-t="tray.1.donde"></p></li>
+        <li class="hito"><span class="hito-punto"></span><small data-t="tray.2.cuando"></small><h3 data-t="tray.2.que"></h3><p data-t="tray.2.donde"></p></li>
+        <li class="hito"><span class="hito-punto"></span><small data-t="tray.3.cuando"></small><h3 data-t="tray.3.que"></h3><p data-t="tray.3.donde"></p></li>
+        <li class="hito"><span class="hito-punto"></span><small data-t="tray.4.cuando"></small><h3 data-t="tray.4.que"></h3><p data-t="tray.4.donde"></p></li>
+      </ol>
+      </div>
+    </section>
+
+    <!-- 6. Lo que me gusta -->
+    <section class="seccion gusta" id="gusta">
+      <p class="eyebrow revela" data-t="gusta.eyebrow">Lo que me gusta</p>
+      <h2 class="h2 revela" data-t="gusta.titulo">Tócalas</h2>
+      <div class="cartas">
+        <button class="carta revela" style="--i:0" type="button"><span class="cara"><span class="emoji">🖥️</span><b data-t="gusta.1"></b></span><span class="dorso" data-t="gusta.1.atras"></span></button>
+        <button class="carta revela" style="--i:1" type="button"><span class="cara"><span class="emoji">🔍</span><b data-t="gusta.2"></b></span><span class="dorso" data-t="gusta.2.atras"></span></button>
+        <button class="carta revela" style="--i:2" type="button"><span class="cara"><span class="emoji">✨</span><b data-t="gusta.3"></b></span><span class="dorso" data-t="gusta.3.atras"></span></button>
+        <button class="carta revela" style="--i:3" type="button"><span class="cara"><span class="emoji">⛏️</span><b data-t="gusta.4"></b></span><span class="dorso" data-t="gusta.4.atras"></span></button>
+        <button class="carta revela" style="--i:4" type="button"><span class="cara"><span class="emoji">🛠️</span><b data-t="gusta.5"></b></span><span class="dorso" data-t="gusta.5.atras"></span></button>
+        <button class="carta revela" style="--i:5" type="button"><span class="cara"><span class="emoji">🗣️</span><b data-t="gusta.6"></b></span><span class="dorso" data-t="gusta.6.atras"></span></button>
+      </div>
+      <div class="busco revela">
+        <span class="punto-vivo" aria-hidden="true"></span>
+        <div><h3 data-t="busco.titulo">Abierto a oportunidades</h3><p data-t="busco.texto"></p></div>
+      </div>
+    </section>
+
+    <!-- 7. Comentarios -->
+    <section class="seccion comentarios" id="comentarios">
+      <p class="eyebrow revela" data-t="com.eyebrow">Comentarios</p>
+      <h2 class="h2 revela" data-t="com.titulo">Déjame un comentario</h2>
+      <div class="muro" aria-live="polite"><p class="muro-vacio" data-t="com.vacio"></p></div>
+      <form class="forma revela" data-api="comentarios">
+        <label><span data-t="com.nombre">Tu nombre</span><input name="nombre" maxlength="60" required autocomplete="name"></label>
+        <label><span data-t="com.texto">¿Qué te pareció?</span><textarea name="texto" maxlength="600" minlength="3" rows="3" required></textarea></label>
+        <label class="miel" aria-hidden="true">Sitio<input name="sitio" tabindex="-1" autocomplete="off"></label>
+        <button class="boton" type="submit"><span class="boton-texto" data-t="com.enviar">Enviar comentario</span><svg class="check" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button>
+        <p class="forma-aviso" role="status"></p>
+      </form>
+    </section>
+
+    <!-- 8. Contacto -->
+    <section class="seccion contacto" id="contacto">
+      <p class="eyebrow revela" data-t="con.eyebrow">Contacto</p>
+      <h2 class="h2 enorme revela" data-t="con.titulo">¿Platicamos?</h2>
+      <p class="sub revela" data-t="con.texto"></p>
+      <div class="redes revela">
+        <a class="red" data-red="whatsapp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.6A8.3 8.3 0 0 1 7.7 18.9L4 20l1.1-3.6A8.3 8.3 0 1 1 20 11.6z"/><path d="M9 8.6c.3 2.6 2 4.6 4.6 5.4l1.1-1.1 1.8.8c-.2 1-1 1.7-2 1.7-3.5-.2-6.3-3-6.6-6.5 0-1 .7-1.8 1.7-2l.8 1.8z"/></svg><span data-t="con.whatsapp">WhatsApp</span></a>
+        <a class="red" data-red="correo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg><span data-t="con.correo">Correo</span></a>
+        <a class="red" href="https://www.linkedin.com/in/salvadorpantoja" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 10.5V16M8 7.5v.01M12 16v-3.2c0-1.4 1-2.3 2.2-2.3s2 .9 2 2.3V16M12 10.5V16"/></svg><span>LinkedIn</span></a>
+        <a class="red" href="https://github.com/Chava33165" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg><span>GitHub</span></a>
+      </div>
+      <form class="forma revela" data-api="contacto">
+        <div class="forma-fila">
+          <label><span data-t="con.nombre">Tu nombre</span><input name="nombre" maxlength="60" required autocomplete="name"></label>
+          <label><span data-t="con.medio">Tu correo o WhatsApp</span><input name="medio" maxlength="120" minlength="3" required autocomplete="email"></label>
+        </div>
+        <label><span data-t="con.mensaje">Tu mensaje</span><textarea name="mensaje" maxlength="2000" minlength="3" rows="4" required></textarea></label>
+        <label class="miel" aria-hidden="true">Sitio<input name="sitio" tabindex="-1" autocomplete="off"></label>
+        <button class="boton" type="submit"><span class="boton-texto" data-t="con.enviar">Enviar mensaje</span><svg class="check" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button>
+        <p class="forma-aviso" role="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <p data-t="pie.texto">Hecho a mano por Salvador Pantoja · servido desde mi Raspberry Pi</p>
+    <a href="#inicio" data-t="pie.arriba">Volver arriba</a>
+  </footer>
+
+  <script src="textos.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
